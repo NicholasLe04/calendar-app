@@ -8,7 +8,6 @@ require('dotenv').config({ path: './config.env' });
 const PORT = process.env.PORT;
 const dbUrl = process.env.DB_URI;
 
-const router = require("./routes/router");
 const userRouter = require("./routes/userRouter");
 
 
@@ -24,8 +23,7 @@ mongoose.connect(dbUrl, options, (err) => {
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use("/users", userRouter);
-app.use("/", router);
+app.use("/user", userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening at port: ${PORT}`);
