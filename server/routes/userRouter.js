@@ -59,7 +59,7 @@ userRouter.post("/login", async (req, res) => {
 
   // Validate if user exist in our database
   const user = await User.findOne({ username });
-  if (user && (await bcrypt.compare(password, user.password))) {
+  if (user && await bcrypt.compare(password, user.password)) {
     // Create token
     const token = jwt.sign(
       { user_id: user._id, username },
@@ -76,6 +76,13 @@ userRouter.post("/login", async (req, res) => {
   res.status(400).json({
     status: 400,
     message: "Invalid Credentials"
+  });
+});
+
+const auth = require("../middleware/auth");
+userRouter.post("/isloggedin", auth, (req, res) => {
+  res.status(200).json({
+    "detail": "success"
   });
 });
 
