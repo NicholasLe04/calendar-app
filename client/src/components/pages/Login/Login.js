@@ -12,7 +12,7 @@ function Login() {
             }
             
             try {
-                let loggedIn = await axios.post("http://localhost:6969/user/isloggedin", {},{
+                await axios.post("http://localhost:6969/user/isloggedin", {},{
                     headers: {
                         "x-access-token": localStorage.getItem('token'),
                     },

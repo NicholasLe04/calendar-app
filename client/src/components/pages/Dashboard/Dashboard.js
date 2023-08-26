@@ -23,7 +23,6 @@ function Dashboard() {
                 });
                 setCurrentUser(user.data.username);
             } catch (err) {
-                
                 navigate('/login')
             }
         }
