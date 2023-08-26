@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt")
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
 require('dotenv').config({ path: '../config.env' });
 
@@ -83,6 +84,14 @@ const auth = require("../middleware/auth");
 userRouter.post("/isloggedin", auth, (req, res) => {
   res.status(200).json({
     "detail": "success"
+  });
+});
+
+userRouter.get("/events", async (req, res) => {
+  const { user_id } = req.body;
+  const user = await User.findOne({ _id: mongoose.Types.ObjectId(user_id) });
+  res.status(200).json({
+    events: user.events
   });
 });
 

@@ -7,10 +7,10 @@ let eventSchema = Schema(
             type: String,
         },
         start: {
-            type: Date,
+            type: Date
         },
-        end: {
-            type: Date,
+        length: {
+            type: Number
         },
     }
 )
