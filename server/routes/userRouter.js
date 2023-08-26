@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt")
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
 require('dotenv').config({ path: '../config.env' });
 
@@ -87,9 +88,18 @@ userRouter.post("/isloggedin", auth, async (req, res) => {
   });
 });
 
-userRouter.post("/current", async (req, res) => {
-  const user = await User.findOne({ token: req.body.token });
+userRouter.get("/current", async (req, res) => {
+  const { token } = req.body;
+  const user = await User.findOne({ token: token });
   res.status(200).json(user);
+});
+  
+userRouter.get("/events", async (req, res) => {
+  const { user_id } = req.body;
+  const user = await User.findOne({ _id: mongoose.Types.ObjectId(user_id) });
+  res.status(200).json({
+    events: user.events
+  });
 });
 
 module.exports = userRouter;

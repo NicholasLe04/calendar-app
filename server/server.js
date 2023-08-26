@@ -9,6 +9,7 @@ const PORT = process.env.PORT;
 const dbUrl = process.env.DB_URI;
 
 const userRouter = require("./routes/userRouter");
+const eventRouter = require("./routes/eventRouter");
 
 
 var options = {
@@ -24,6 +25,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/user", userRouter);
+app.use("/event", eventRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening at port: ${PORT}`);
