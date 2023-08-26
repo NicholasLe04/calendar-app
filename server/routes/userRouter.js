@@ -71,6 +71,7 @@ userRouter.post("/login", async (req, res) => {
     );
     // save user token
     user.token = token;
+    await user.save();
     // user
     return res.status(200).json(user);
   }
@@ -81,12 +82,18 @@ userRouter.post("/login", async (req, res) => {
 });
 
 const auth = require("../middleware/auth");
-userRouter.post("/isloggedin", auth, (req, res) => {
+userRouter.post("/isloggedin", auth, async (req, res) => {
   res.status(200).json({
     "detail": "success"
   });
 });
 
+userRouter.get("/current", async (req, res) => {
+  const { token } = req.body;
+  const user = await User.findOne({ token: token });
+  res.status(200).json(user);
+});
+  
 userRouter.get("/events", async (req, res) => {
   const { user_id } = req.body;
   const user = await User.findOne({ _id: mongoose.Types.ObjectId(user_id) });
