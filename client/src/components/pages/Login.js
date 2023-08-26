@@ -12,7 +12,6 @@ function Login() {
             }
             
             try {
-                console.log(localStorage.getItem('token'));
                 let loggedIn = await axios.post("http://localhost:6969/user/isloggedin", {},{
                     headers: {
                         "x-access-token": localStorage.getItem('token'),
@@ -51,7 +50,6 @@ function Login() {
                 username: document.getElementById("newUsername").value,
                 password: document.getElementById("newPassword").value,
             });
-            console.log(result.data.token);
             localStorage.setItem('token', result.data.token);
             navigate('/dashboard');
         } catch(err){

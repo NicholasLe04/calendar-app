@@ -80,10 +80,16 @@ userRouter.post("/login", async (req, res) => {
 });
 
 const auth = require("../middleware/auth");
-userRouter.post("/isloggedin", auth, (req, res) => {
+userRouter.post("/isloggedin", auth, async (req, res) => {
   res.status(200).json({
     "detail": "success"
   });
+});
+
+userRouter.post("/current", async (req, res) => {
+  console.log(req.token);
+  const user = await User.findOne({ token: req.token });
+  res.status(200).json(user);
 });
 
 module.exports = userRouter;
