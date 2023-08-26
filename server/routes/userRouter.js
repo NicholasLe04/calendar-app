@@ -70,6 +70,7 @@ userRouter.post("/login", async (req, res) => {
     );
     // save user token
     user.token = token;
+    await user.save();
     // user
     return res.status(200).json(user);
   }
@@ -87,8 +88,7 @@ userRouter.post("/isloggedin", auth, async (req, res) => {
 });
 
 userRouter.post("/current", async (req, res) => {
-  console.log(req.token);
-  const user = await User.findOne({ token: req.token });
+  const user = await User.findOne({ token: req.body.token });
   res.status(200).json(user);
 });
 

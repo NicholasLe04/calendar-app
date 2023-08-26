@@ -34,7 +34,6 @@ function Login() {
                 username: document.getElementById("username").value,
                 password: document.getElementById("password").value
             })
-            console.log(user.data.token);
             localStorage.setItem("token", user.data.token);
             navigate('/dashboard');
         } catch(err){

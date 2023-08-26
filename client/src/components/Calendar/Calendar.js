@@ -1,4 +1,5 @@
 import "./Calendar.css";
+import CalendarDays from "./CalendarDays";
 
 function Calendar() {
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -21,7 +22,7 @@ function Calendar() {
                         }
                     </div>
                     <div className="table">
-                        
+                        <CalendarDays day={today} />
                     </div>
                 </div>
             </div>

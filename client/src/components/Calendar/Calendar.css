@@ -9,7 +9,8 @@
   height: 100px;
   width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
 }
 
 .calendar-body {
@@ -30,4 +31,40 @@
 .weekday {
   width: 100px;
   text-align: center;
+}
+
+.table-content {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.calendar-day {
+  width: 14%;
+  height: 150px;
+  position: relative;
+  border: 1px solid #a6a6a6;
+}
+
+.calendar-day:hover {
+  background-color: rgba(0,0,0,.10);
+}
+
+.calendar-day p {
+  position: absolute;
+  right: 10px;
+  color: #a6a6a6;
+}
+
+.current p {
+  color: #000000;
+}
+
+.selected {
+  background-color: rgba(0,0,0,.10);
+  font-weight: bold;
+  font-size: large;
 }
