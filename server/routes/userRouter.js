@@ -88,7 +88,7 @@ userRouter.post("/isloggedin", auth, async (req, res) => {
   });
 });
 
-userRouter.get("/current", async (req, res) => {
+userRouter.post("/current", async (req, res) => {
   const { token } = req.body;
   const user = await User.findOne({ token: token });
   res.status(200).json(user);
