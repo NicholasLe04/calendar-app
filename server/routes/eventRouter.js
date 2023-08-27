@@ -9,7 +9,6 @@ const eventRouter = express.Router();
 
 eventRouter.post("/add-event", async (req, res) => {
     const { user_id, event } = req.body;
-  
     // Validate user input
     if (!(user_id && event)) {
         return res.status(400).json({

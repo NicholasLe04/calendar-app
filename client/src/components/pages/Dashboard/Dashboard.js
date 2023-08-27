@@ -3,12 +3,20 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Calendar from "../../Calendar/Calendar";
 
+import AddEventPopUp from "../../Calendar/Event/AddEventPopUp";
+import EventInfoPopUp from "../../Calendar/Event/EventInfoPopUp";
 import "./Dashboard.css";
+import DimmedOverlay from "../../reusables/DimmedOverlay/DimmedOverlay";
 
 function Dashboard() {
     const navigate = useNavigate();
+    const [ currentUser, setCurrentUser ] = useState({});
+    const [ selectedEvent, setSelectedEvent ] = useState();
+    const [ selectedDate, setSelectedDate ] = useState();
+    const [ addPopUp, setAddPopUp ] = useState(false);
+    const [ eventPopUp, setEventPopUp ] = useState(false);
 
-    const [ currentUser, setCurrentUser ] = useState("");
+    const duringPopUp = (addPopUp || eventPopUp) ? " during-popup" : "";
 
     useEffect(() => {
         async function getUser() {
@@ -21,13 +29,47 @@ function Dashboard() {
                 let user = await axios.post("http://localhost:6969/user/current", {
                     token: localStorage.getItem("token")
                 });
-                setCurrentUser(user.data.username);
+                setCurrentUser(user.data);
             } catch (err) {
                 navigate('/login')
             }
         }
         getUser();
     }, []);
+
+
+    function getAddDate(date) {
+        setSelectedDate(new Date(date).toISOString().substring(0,10));
+        setAddPopUp(true);
+    }
+
+    function getEventInfo(event) {
+        setSelectedEvent(event);
+        setEventPopUp(true);
+    }
+
+    async function addEvent(title, time, length) {
+        console.log(title + time + length);
+        await axios.post("http://localhost:6969/event/add-event", {
+            user_id: currentUser._id,
+            event: {
+                title: title,
+                start: `${selectedDate}T${time}`,
+                length: length
+            } 
+        });
+        setAddPopUp(false);
+        window.location.reload();
+    }
+
+    async function deleteEvent() {
+        await axios.post("http://localhost:6969/event/delete-event", {
+            user_id: currentUser._id,
+            event_id: selectedEvent._id
+        });
+        setEventPopUp(false);
+        window.location.reload();
+    }
 
     async function logout(e) {
         e.preventDefault();
@@ -36,14 +78,19 @@ function Dashboard() {
     }
 
     return (
-        <>  
-            <div className="header">
-                <p className="title">Calendar</p>
-                <p className="user">Welcome, {currentUser}!</p>
-                <button className="logout-button" onClick={logout}>Log Out</button>
-            </div>
-            <div className="calendar-div">
-                <Calendar/>
+        <>
+            {addPopUp && <AddEventPopUp togglePopUp={setAddPopUp} addEventFunction={addEvent}/>}
+            {eventPopUp && <EventInfoPopUp togglePopUp={setEventPopUp} deleteEventFunction={deleteEvent} eventInfo={selectedEvent}/>}
+            {(addPopUp || eventPopUp) && <DimmedOverlay/>}
+            <div className={"dashboard" + duringPopUp}>  
+                <div className="header">
+                    <p className="title">Calendar</p>
+                    <p className="user">Welcome, {currentUser.username}!</p>
+                    <button className="logout-button" onClick={logout}>Log Out</button>
+                </div>
+                <div className="calendar-div">
+                    {currentUser._id && <Calendar loggedUserId={currentUser._id} toggleAddEvent={setAddPopUp} getAddDate={getAddDate} getEventInfo={getEventInfo}/>}
+                </div>
             </div>
         </>
     );

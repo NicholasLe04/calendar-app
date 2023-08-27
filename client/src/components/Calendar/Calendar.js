@@ -1,7 +1,8 @@
 import "./Calendar.css";
 import CalendarDays from "./CalendarDays";
 
-function Calendar() {
+function Calendar(props) {
+    const { loggedUserId, toggleAddEvent, getAddDate, getEventInfo } = props;
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -10,9 +11,9 @@ function Calendar() {
     return (
         <>
             <div className="calendar">
-                <div className="calendar-header">
-                    <h2>{months[today.getMonth()]} {today.getFullYear()}</h2>
-                </div>
+            <div className="calendar-header">
+                <h2>{months[today.getMonth()]} {today.getFullYear()}</h2>
+            </div>
                 <div className="calendar-body">
                     <div className="table-header">
                         {
@@ -22,7 +23,7 @@ function Calendar() {
                         }
                     </div>
                     <div className="table">
-                        <CalendarDays day={today} />
+                        <CalendarDays today={today} loggedUserId={loggedUserId} toggleAddEvent={toggleAddEvent} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
                     </div>
                 </div>
             </div>

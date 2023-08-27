@@ -20,6 +20,25 @@
   flex-direction: column;
 }
 
+
+
+.event {
+  background-color: darkseagreen;
+  font-weight: lighter;
+  font-size: 15px;
+  border-top: 1px solid rgb(107, 146, 107);
+  border-bottom: 1px solid rgb(107, 146, 107);
+  text-align: center;
+}
+
+.event:hover {
+  background-color: rgb(124, 161, 124);
+}
+
+.events {
+  margin-top: 40px;
+}
+
 .table-header {
   height: 100px;
   width: 100%;
@@ -66,5 +85,8 @@
 .selected {
   background-color: rgba(0,0,0,.10);
   font-weight: bold;
-  font-size: large;
+}
+
+.during-popup{
+  pointer-events: none;
 }

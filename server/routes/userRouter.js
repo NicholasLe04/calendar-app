@@ -94,7 +94,7 @@ userRouter.post("/current", async (req, res) => {
   res.status(200).json(user);
 });
   
-userRouter.get("/events", async (req, res) => {
+userRouter.post("/events", async (req, res) => {
   const { user_id } = req.body;
   const user = await User.findOne({ _id: mongoose.Types.ObjectId(user_id) });
   res.status(200).json({
