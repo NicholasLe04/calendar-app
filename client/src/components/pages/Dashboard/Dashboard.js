@@ -79,8 +79,8 @@ function Dashboard() {
 
     return (
         <>
-            {addPopUp && <AddEventPopUp togglePopUp={setAddPopUp} addEventFunction={addEvent}/>}
             {eventPopUp && <EventInfoPopUp togglePopUp={setEventPopUp} deleteEventFunction={deleteEvent} eventInfo={selectedEvent}/>}
+            {(addPopUp && !eventPopUp) && <AddEventPopUp togglePopUp={setAddPopUp} addEventFunction={addEvent}/>}
             {(addPopUp || eventPopUp) && <DimmedOverlay/>}
             <div className={"dashboard" + duringPopUp}>  
                 <div className="header">
@@ -91,6 +91,9 @@ function Dashboard() {
                 <div className="calendar-div">
                     {currentUser._id && <Calendar loggedUserId={currentUser._id} toggleAddEvent={setAddPopUp} getAddDate={getAddDate} getEventInfo={getEventInfo}/>}
                 </div>
+            </div>
+            <div className="footer">
+                NICHOLAS LE
             </div>
         </>
     );

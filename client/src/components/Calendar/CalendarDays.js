@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function CalendarDays(props) {
-    const { today, loggedUserId, toggleAddEvent, getAddDate, getEventInfo } = props;
+    const { timeframe, loggedUserId, getAddDate, getEventInfo } = props;
 
-    let currentDay = new Date(today.getFullYear(), today.getMonth(), 1);
+    let currentDay = new Date(timeframe);
     let weekdayOfFirstDay = currentDay.getDay();
     let currentDays = [];
 
@@ -46,11 +46,11 @@ function CalendarDays(props) {
         })
         // Add the current day to the day array
         currentDays.push({
-            currentMonth: (currentDay.getMonth() === today.getMonth()),
+            currentMonth: (currentDay.getMonth() === timeframe.getMonth()),
             date: (new Date(currentDay)),
             month: currentDay.getMonth(),
             number: currentDay.getDate(),
-            selected: (currentDay.toDateString() === today.toDateString()),
+            selected: (currentDay.toDateString() === (new Date()).toDateString()),
             year: currentDay.getFullYear(),
             events: eventsToday
         });
@@ -67,7 +67,10 @@ function CalendarDays(props) {
                             {
                                 day.events.map((event) => {
                                     return(
-                                        <div className="event" key={event._id} onClick={() => getEventInfo(event)}>{event.title} - {new Date(event.start).toTimeString().substring(0,5)}</div>
+                                        <div className="event" key={event._id} onClick={(e) => {
+                                            e.stopPropagation();
+                                            getEventInfo(event);
+                                        }}>{event.title} - {new Date(event.start).toTimeString().substring(0,5)}</div>
                                     )
                                 })
                             }

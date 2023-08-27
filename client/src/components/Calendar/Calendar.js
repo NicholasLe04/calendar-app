@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Calendar.css";
 import CalendarDays from "./CalendarDays";
 
@@ -7,12 +8,23 @@ function Calendar(props) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     let today = new Date();
+    const [ timeframe, setTimeframe ] = useState(new Date(today.getFullYear(), today.getMonth()));
+
+    function nextMonth() {
+        setTimeframe(new Date(timeframe.getFullYear(), timeframe.getMonth()+1));
+    }
+
+    function previousMonth() {
+        setTimeframe(new Date(timeframe.getFullYear(), timeframe.getMonth()-1));
+    }
 
     return (
         <>
             <div className="calendar">
             <div className="calendar-header">
-                <h2>{months[today.getMonth()]} {today.getFullYear()}</h2>
+                <button className="month-select" onClick={previousMonth}> &lt; </button>
+                <h2 className="displayed-month">{months[timeframe.getMonth()]} {timeframe.getFullYear()}</h2>
+                <button className="month-select" onClick={nextMonth}> &gt; </button>
             </div>
                 <div className="calendar-body">
                     <div className="table-header">
@@ -23,7 +35,7 @@ function Calendar(props) {
                         }
                     </div>
                     <div className="table">
-                        <CalendarDays today={today} loggedUserId={loggedUserId} toggleAddEvent={toggleAddEvent} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
+                        <CalendarDays timeframe={timeframe} loggedUserId={loggedUserId} toggleAddEvent={toggleAddEvent} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
                     </div>
                 </div>
             </div>
