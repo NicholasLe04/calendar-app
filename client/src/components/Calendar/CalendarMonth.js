@@ -13,7 +13,7 @@ function CalendarMonth(props) {
 
     useEffect(() => {
         async function getEvents(){
-            let eventResponse = await axios.get(`http://localhost:6969/user/events?user_id=${loggedUserId}`, 
+            let eventResponse = await axios.get(`https://uniplan-api.vercel.app/user/events?user_id=${loggedUserId}`, 
             {
                 headers: {
                     "jwt-auth-token": localStorage.getItem('token'),

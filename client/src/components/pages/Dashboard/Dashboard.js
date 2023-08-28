@@ -21,13 +21,13 @@ function Dashboard() {
     useEffect(() => {
         async function getUser() {
             try {
-                await axios.post("http://localhost:6969/user/isloggedin", {},
+                await axios.post("https://uniplan-api.vercel.app/user/isloggedin", {},
                 {
                     headers: {
                         "jwt-auth-token": localStorage.getItem('token'),
                     },
                 });
-                let user = await axios.get("http://localhost:6969/user/current",
+                let user = await axios.get("https://uniplan-api.vercel.app/user/current",
                 {
                     headers: {
                         "jwt-auth-token": localStorage.getItem('token'),
@@ -54,7 +54,7 @@ function Dashboard() {
 
     async function addEvent(title, time, length, description) {
         console.log(title + time + length);
-        await axios.post("http://localhost:6969/event/add-event", {
+        await axios.post("https://uniplan-api.vercel.app/event/add-event", {
             user_id: currentUser._id,
             event: {
                 title: title,
@@ -74,7 +74,7 @@ function Dashboard() {
     }
 
     async function deleteEvent() {
-        await axios.post("http://localhost:6969/event/delete-event", {
+        await axios.post("https://uniplan-api.vercel.app/event/delete-event", {
             user_id: currentUser._id,
             event_id: selectedEvent._id
         },

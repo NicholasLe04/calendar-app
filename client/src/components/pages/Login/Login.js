@@ -12,7 +12,7 @@ function Login() {
             }
             
             try {
-                await axios.post("http://localhost:6969/user/isloggedin", {},{
+                await axios.post("https://uniplan-api.vercel.app/user/isloggedin", {},{
                     headers: {
                         "jwt-auth-token": localStorage.getItem('token'),
                     },
@@ -30,7 +30,7 @@ function Login() {
     async function login(e) {
         e.preventDefault();
         try {
-            let user = await axios.post("http://localhost:6969/user/login", {
+            let user = await axios.post("https://uniplan-api.vercel.app/user/login", {
                 username: document.getElementById("username").value,
                 password: document.getElementById("password").value
             })
@@ -45,7 +45,7 @@ function Login() {
 
         e.preventDefault();
         try {
-            let result = await axios.post("http://localhost:6969/user/signup", {
+            let result = await axios.post("https://uniplan-api.vercel.app/user/signup", {
                 username: document.getElementById("newUsername").value,
                 password: document.getElementById("newPassword").value,
             });
