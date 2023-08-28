@@ -1,0 +1,43 @@
+.popup{
+    position: fixed;
+
+    left: 35%;
+    top: 20%;
+    
+    height: 500px;
+
+    width: 30%;
+
+    border: 3px solid gray;
+    border-radius: 1em;
+
+    background-color: #FDFFFC;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #011627;
+    z-index: 10;
+}
+
+
+.popup-content {
+    text-align: center;
+    display: inline;
+    list-style: none;
+    align-items: center;
+}
+
+.popup-content p {
+    margin: 0;
+}
+
+.popup button {
+    height: 40px;
+    width: 120px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}

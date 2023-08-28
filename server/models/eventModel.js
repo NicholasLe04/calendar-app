@@ -6,12 +6,18 @@ let eventSchema = Schema(
         title: {
             type: String,
         },
+        description: {
+            type: String,  
+        },
         start: {
-            type: Date
+            type: Date,
         },
         length: {
-            type: Number
+            type: Number,
         },
+        repetitions: {
+            type: Array,
+        }
     }
 )
 

@@ -5,13 +5,15 @@ import Dashboard from './components/pages/Dashboard/Dashboard';
 
 function Root() {
   return (
-    <div className="Root">
-      <Routes>
-        <Route path="/" exact element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </div>
+    <>
+      <div className="Root">
+        <Routes>
+          <Route path="/" exact element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
