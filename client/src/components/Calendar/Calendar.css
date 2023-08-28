@@ -13,13 +13,27 @@
   font-size: xx-large;
 }
 
+.timeframe-scale-container {
+  display: flex;
+  justify-content: center;
+}
+
+#timeframe-scale {
+  width: 200px;
+  height: 40px;
+  background: none;
+
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+}
+
 .calendar-body {
   width: 100%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-
 
 
 .event {

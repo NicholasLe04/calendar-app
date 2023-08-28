@@ -13,7 +13,7 @@ let userSchema = Schema(
             type: String,
         },
         events: {
-            type: Array
+            type: Array,
         }
     }
 )

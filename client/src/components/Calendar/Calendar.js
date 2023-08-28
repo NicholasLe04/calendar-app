@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Calendar.css";
-import CalendarDays from "./CalendarDays";
+import CalendarMonth from "./CalendarMonth";
 
 function Calendar(props) {
     const { loggedUserId, toggleAddEvent, getAddDate, getEventInfo } = props;
@@ -21,11 +21,18 @@ function Calendar(props) {
     return (
         <>
             <div className="calendar">
-            <div className="calendar-header">
-                <button className="month-select" onClick={previousMonth}> &lt; </button>
-                <h2 className="displayed-month">{months[timeframe.getMonth()]} {timeframe.getFullYear()}</h2>
-                <button className="month-select" onClick={nextMonth}> &gt; </button>
-            </div>
+                <div className="calendar-header">
+                    <button className="month-select" onClick={previousMonth}> &lt; </button>
+                    <h2 className="displayed-month">{months[timeframe.getMonth()]} {timeframe.getFullYear()}</h2>
+                    <button className="month-select" onClick={nextMonth}> &gt; </button>
+                </div>
+                <div className="timeframe-scale-container">
+                    <select id="timeframe-scale" defaultValue="month">
+                        <option value="month">Month</option>
+                        <option value="week">Week</option>
+                        <option value="day">Day</option>
+                    </select>
+                </div>
                 <div className="calendar-body">
                     <div className="table-header">
                         {
@@ -35,7 +42,7 @@ function Calendar(props) {
                         }
                     </div>
                     <div className="table">
-                        <CalendarDays timeframe={timeframe} loggedUserId={loggedUserId} toggleAddEvent={toggleAddEvent} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
+                        <CalendarMonth timeframe={timeframe} loggedUserId={loggedUserId} toggleAddEvent={toggleAddEvent} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
                     </div>
                 </div>
             </div>

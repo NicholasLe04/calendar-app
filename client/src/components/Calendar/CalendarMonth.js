@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function CalendarDays(props) {
+function CalendarMonth(props) {
     const { timeframe, loggedUserId, getAddDate, getEventInfo } = props;
 
     let currentDay = new Date(timeframe);
@@ -28,7 +28,7 @@ function CalendarDays(props) {
     }
 
 
-    for (let day = 0; day < 35; day++) {
+    for (let day = 0; day < 42; day++) {
         if (day === 0 && weekdayOfFirstDay === 0) {
             currentDay.setDate(currentDay.getDate()-7);
         } 
@@ -83,4 +83,4 @@ function CalendarDays(props) {
     )
   }
   
-  export default CalendarDays;
+  export default CalendarMonth;
