@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-require('dotenv').config({ path: '../config.env' });
 const config = process.env;
 
 const verifyToken = (req, res, next) => {

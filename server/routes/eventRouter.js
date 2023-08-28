@@ -3,8 +3,6 @@ const User = require("../models/userModel");
 const Event = require("../models/eventModel");
 const mongoose = require("mongoose");
 
-require('dotenv').config({ path: '../config.env' });
-
 const eventRouter = express.Router();
 
 eventRouter.post("/add-event", async (req, res) => {

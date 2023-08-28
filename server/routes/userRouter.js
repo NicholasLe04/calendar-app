@@ -4,8 +4,6 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
-require('dotenv').config({ path: '../config.env' });
-
 const userRouter = express.Router();
 
 userRouter.post("/signup", async (req, res) => {
