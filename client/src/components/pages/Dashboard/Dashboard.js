@@ -21,13 +21,17 @@ function Dashboard() {
     useEffect(() => {
         async function getUser() {
             try {
-                await axios.post("http://localhost:6969/user/isloggedin", {},{
-                        headers: {
-                            "x-access-token": localStorage.getItem('token'),
-                        },
-                    });
-                let user = await axios.post("http://localhost:6969/user/current", {
-                    token: localStorage.getItem("token")
+                await axios.post("http://localhost:6969/user/isloggedin", {},
+                {
+                    headers: {
+                        "jwt-auth-token": localStorage.getItem('token'),
+                    },
+                });
+                let user = await axios.get("http://localhost:6969/user/current",
+                {
+                    headers: {
+                        "jwt-auth-token": localStorage.getItem('token'),
+                    },
                 });
                 setCurrentUser(user.data);
             } catch (err) {
@@ -58,7 +62,12 @@ function Dashboard() {
                 start: `${selectedDate}T${time}`,
                 length: length,
                 repetitions: [], 
-            } 
+            }
+        },
+        {
+            headers: {
+                "jwt-auth-token": localStorage.getItem('token'),
+            },
         });
         setAddPopUp(false);
         window.location.reload();
@@ -68,6 +77,11 @@ function Dashboard() {
         await axios.post("http://localhost:6969/event/delete-event", {
             user_id: currentUser._id,
             event_id: selectedEvent._id
+        },
+        {
+            headers: {
+                "jwt-auth-token": localStorage.getItem('token'),
+            },
         });
         setEventPopUp(false);
         window.location.reload();
