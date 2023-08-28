@@ -3,9 +3,10 @@ const User = require("../models/userModel");
 const Event = require("../models/eventModel");
 const mongoose = require("mongoose");
 
+const auth = require("../middleware/auth");
 const eventRouter = express.Router();
 
-eventRouter.post("/add-event", async (req, res) => {
+eventRouter.post("/add-event", auth, async (req, res) => {
     const { user_id, event } = req.body;
     // Validate user input
     if (!(user_id && event)) {
@@ -30,7 +31,7 @@ eventRouter.post("/add-event", async (req, res) => {
     return res.status(200).json(event._id);
 });
 
-eventRouter.post("/delete-event", async (req, res) => {
+eventRouter.post("/delete-event", auth, async (req, res) => {
     const { user_id, event_id } = req.body;
 
     // Validate user input

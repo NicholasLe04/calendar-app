@@ -4,6 +4,7 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
+const auth = require("../middleware/auth");
 const userRouter = express.Router();
 
 userRouter.post("/signup", async (req, res) => {
@@ -79,21 +80,19 @@ userRouter.post("/login", async (req, res) => {
   });
 });
 
-const auth = require("../middleware/auth");
 userRouter.post("/isloggedin", auth, async (req, res) => {
   res.status(200).json({
     "detail": "success"
   });
 });
 
-userRouter.post("/current", async (req, res) => {
-  const { token } = req.body;
-  const user = await User.findOne({ token: token });
+userRouter.get("/current", auth, async (req, res) => {
+  const user = await User.findOne({ token: req.headers["jwt-auth-token"] });
   res.status(200).json(user);
 });
   
-userRouter.post("/events", async (req, res) => {
-  const { user_id } = req.body;
+userRouter.get("/events", auth, async (req, res) => {
+  const { user_id } = req.query;
   const user = await User.findOne({ _id: mongoose.Types.ObjectId(user_id) });
   res.status(200).json({
     events: user.events

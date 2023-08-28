@@ -14,7 +14,7 @@ function Login() {
             try {
                 await axios.post("http://localhost:6969/user/isloggedin", {},{
                     headers: {
-                        "x-access-token": localStorage.getItem('token'),
+                        "jwt-auth-token": localStorage.getItem('token'),
                     },
                 });
                 navigate('/dashboard');
