@@ -1,30 +1,11 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 function CalendarMonth(props) {
-    const { timeframe, loggedUserId, getAddDate, getEventInfo } = props;
+    const { events, timeframe, getAddDate, getEventInfo } = props;
 
     let currentDay = new Date(timeframe);
     let weekdayOfFirstDay = currentDay.getDay();
     let currentDays = [];
 
-
-    const [ events, setEvents ] = useState(undefined);
-
-    useEffect(() => {
-        async function getEvents(){
-            let eventResponse = await axios.get(`https://uniplan-api.vercel.app/user/events?user_id=${loggedUserId}`, 
-            {
-                headers: {
-                    "jwt-auth-token": localStorage.getItem('token'),
-                },
-            });
-            setEvents(eventResponse.data.events);
-        }
-        getEvents();
-    }, []);
-
-    if (events === undefined){
+    if (events === []){
         return(
             <h1>loading</h1>
         );  

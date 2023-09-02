@@ -8,6 +8,8 @@ import EventInfoPopUp from "../../Calendar/Event/EventInfoPopUp";
 import "./Dashboard.css";
 import DimmedOverlay from "../../reusables/DimmedOverlay/DimmedOverlay";
 
+const BASE_URL = "https://uniplan-api.vercel.app";
+
 function Dashboard() {
     const navigate = useNavigate();
     const [ currentUser, setCurrentUser ] = useState({});
@@ -15,30 +17,49 @@ function Dashboard() {
     const [ selectedDate, setSelectedDate ] = useState();
     const [ addPopUp, setAddPopUp ] = useState(false);
     const [ eventPopUp, setEventPopUp ] = useState(false);
+    const [ events, setEvents ] = useState([]);
 
     const duringPopUp = (addPopUp || eventPopUp) ? " during-popup" : "";
 
+    async function updateEvents() {
+        let eventResponse = await axios.get(`https://uniplan-api.vercel.app/user/events?user_id=${currentUser._id}`, 
+        {
+            headers: {
+                "jwt-auth-token": localStorage.getItem('token'),
+            },
+        });
+        setEvents(eventResponse.data.events);
+    }
+
     useEffect(() => {
-        async function getUser() {
+        async function initializeUserData() {
             try {
-                await axios.post("https://uniplan-api.vercel.app/user/isloggedin", {},
+                await axios.post(`${BASE_URL}/user/isloggedin`, {},
                 {
                     headers: {
                         "jwt-auth-token": localStorage.getItem('token'),
                     },
                 });
-                let user = await axios.get("https://uniplan-api.vercel.app/user/current",
+                let user = await axios.get(`${BASE_URL}/user/current`,
                 {
                     headers: {
                         "jwt-auth-token": localStorage.getItem('token'),
                     },
                 });
                 setCurrentUser(user.data);
+
+                let eventResponse = await axios.get(`https://uniplan-api.vercel.app/user/events?user_id=${user.data._id}`, 
+                {
+                    headers: {
+                        "jwt-auth-token": localStorage.getItem('token'),
+                    },
+                });
+                setEvents(eventResponse.data.events);
             } catch (err) {
-                navigate('/login')
+                navigate('/login');
             }
         }
-        getUser();
+        initializeUserData();
     }, []);
 
 
@@ -54,7 +75,7 @@ function Dashboard() {
 
     async function addEvent(title, time, length, description) {
         console.log(title + time + length);
-        await axios.post("https://uniplan-api.vercel.app/event/add-event", {
+        await axios.post(`${BASE_URL}/event/add-event`, {
             user_id: currentUser._id,
             event: {
                 title: title,
@@ -70,11 +91,12 @@ function Dashboard() {
             },
         });
         setAddPopUp(false);
-        window.location.reload();
+
+        updateEvents();
     }
 
     async function deleteEvent() {
-        await axios.post("https://uniplan-api.vercel.app/event/delete-event", {
+        await axios.post(`${BASE_URL}/event/delete-event`, {
             user_id: currentUser._id,
             event_id: selectedEvent._id
         },
@@ -84,7 +106,8 @@ function Dashboard() {
             },
         });
         setEventPopUp(false);
-        window.location.reload();
+
+        updateEvents();
     }
 
     async function logout(e) {
@@ -105,7 +128,7 @@ function Dashboard() {
                     <button className="logout-button" onClick={logout}>Log Out</button>
                 </div>
                 <div className="calendar-div">
-                    {currentUser._id && <Calendar loggedUserId={currentUser._id} toggleAddEvent={setAddPopUp} getAddDate={getAddDate} getEventInfo={getEventInfo}/>}
+                    <Calendar events={events} toggleAddEvent={setAddPopUp} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
                 </div>
             </div>
             <div className="footer">

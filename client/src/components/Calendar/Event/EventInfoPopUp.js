@@ -7,7 +7,6 @@ function EventInfoPopUp(props) {
     async function deleteEvent() {
         deleteEventFunction();
         togglePopUp(false);
-        window.location.reload();
     }
     async function cancel() {
         togglePopUp(false);

@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+.calendar-div {
+  background-color: rgb(255, 250, 223);
+}
+
 .calendar-header {
   height: 100px;
   width: 100%;
