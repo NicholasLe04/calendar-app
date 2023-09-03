@@ -1,0 +1,122 @@
+.calendar-div {
+  background-color: white;
+}
+
+.event {
+  background-color: darkseagreen;
+  font-weight: lighter;
+  font-size: 12px;
+  border-top: 1px solid rgb(107, 146, 107);
+  border-bottom: 1px solid rgb(107, 146, 107);
+  text-align: center;
+  width: 100%;
+}
+
+.event:hover {
+  background-color: rgb(124, 161, 124);
+}
+
+.events {
+  margin-top: 50px;
+}
+
+.table-header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+
+.calendar-header {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.displayed-month {
+  padding-top: 25px;
+  width: 450px;
+  text-align: center;
+  margin: 0;
+}
+
+.displayed-week {
+  padding-top: 25px;
+  width: 450px;
+  text-align: center;
+  margin: 0;
+}
+
+.time-select {
+  margin-top: 15px;
+  font-family: "Pixelated";
+
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+  font-weight: bolder;
+
+  background: none;
+  border: none;
+}
+
+.time-select:hover {
+  color: darkseagreen;
+}
+
+.table-content {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.weekday {
+  width: 100px;
+  text-align: center;
+}
+
+.calendar-day {
+  width: 14%;
+  position: relative;
+  border: 1px solid #a6a6a6;
+}
+
+
+
+.week {
+  height: 770px;
+}
+
+.month {
+  height: 150px;
+}
+
+
+
+.calendar-day:hover {
+  background-color: rgba(0,0,0,.10);
+}
+
+.calendar-day p {
+  position: absolute;
+  right: 10px;
+  color: #a6a6a6;
+}
+
+.current p {
+  color: #000000;
+}
+
+.selected {
+  background-color: rgba(0,0,0,.10);
+  font-weight: bold;
+}
+

@@ -18,7 +18,7 @@ function EventInfoPopUp(props) {
                 <h1>{eventInfo.title}</h1>
                 <h2>When</h2>
                 <p>{new Date(eventInfo.start).toDateString()}</p>
-                <p>{new Date(eventInfo.start).toTimeString()}</p>
+                <p>{new Date(eventInfo.start).toLocaleTimeString("en-US")}</p>
                 <h2>Description</h2>
                 <p>{eventInfo.description}</p>
             </div>

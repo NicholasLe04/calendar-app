@@ -23,15 +23,20 @@
 }
 
 .logout-button {
-    height: auto;
-    width: 150px;
-    background: none;
-    border: none;
-    font-size: large;
+    background-color: #FDFFFC;
+    font-family: "Pixelated";
+
+    padding: 12px 18px;
+
+    border-radius: 4px;
+    border: solid 4px #121212;
+    box-shadow: 2px 2px #121212;
+    transition: transform 50ms, box-shadow 50ms;
 }
 
 .logout-button:hover {
-    text-shadow: 2px 2px 2px white;
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px #121212;
 }
 
 .footer {

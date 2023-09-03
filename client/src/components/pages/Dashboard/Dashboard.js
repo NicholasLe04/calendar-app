@@ -73,7 +73,7 @@ function Dashboard() {
         setEventPopUp(true);
     }
 
-    async function addEvent(title, time, length, description) {
+    async function addEvent(title, time, length, description, repetitions) {
         console.log(title + time + length);
         await axios.post(`${BASE_URL}/event/add-event`, {
             user_id: currentUser._id,
@@ -82,7 +82,7 @@ function Dashboard() {
                 description: description,
                 start: `${selectedDate}T${time}`,
                 length: length,
-                repetitions: [], 
+                repetitions: repetitions, 
             }
         },
         {
@@ -123,7 +123,7 @@ function Dashboard() {
             {(addPopUp || eventPopUp) && <DimmedOverlay/>}
             <div className={"dashboard" + duringPopUp}>  
                 <div className="header">
-                    <p className="title">Calendar</p>
+                    <p className="title">UniPlan</p>
                     <p className="user">Welcome, {currentUser.username}!</p>
                     <button className="logout-button" onClick={logout}>Log Out</button>
                 </div>
