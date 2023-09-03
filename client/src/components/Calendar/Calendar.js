@@ -5,7 +5,7 @@ import CalendarMonth from "./CalendarMonth";
 import CalendarWeek from "./CalendarWeek";
 
 function Calendar(props) {
-    const { events, toggleAddEvent, getAddDate, getEventInfo } = props;
+    const { events, getAddDate, getEventInfo } = props;
 
 
     let today = new Date();
@@ -24,8 +24,8 @@ function Calendar(props) {
                 </div>
                 <div className="calendar-body">
                     <div className="table">
-                        { timescale === "month" && <CalendarMonth events={events} timeframe={currentDate} changeTimeframe={setCurrentDate} toggleAddEvent={toggleAddEvent} getAddDate={getAddDate} getEventInfo={getEventInfo} /> }
-                        { timescale === "week" && <CalendarWeek events={events} timeframe={currentDate} changeTimeframe={setCurrentDate}/>}
+                        { timescale === "month" && <CalendarMonth events={events} timeframe={currentDate} changeTimeframe={setCurrentDate} getAddDate={getAddDate} getEventInfo={getEventInfo} /> }
+                        { timescale === "week" && <CalendarWeek events={events} timeframe={currentDate} changeTimeframe={setCurrentDate} getAddDate={getAddDate} getEventInfo={getEventInfo}/>}
                     </div>
                 </div>
             </div>

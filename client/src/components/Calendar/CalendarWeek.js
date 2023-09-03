@@ -1,9 +1,10 @@
 import "./CalendarDays.css";
 
 function CalendarWeek(props) {
-    const { events, timeframe, changeTimeframe } = props;
+    const { events, timeframe, changeTimeframe, getAddDate, getEventInfo  } = props;
 
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
     let currentDay = new Date(timeframe);
     let weekdayOfFirstDay = currentDay.getDay();
@@ -60,9 +61,9 @@ function CalendarWeek(props) {
             <div className="calendar-header">
                 <button className="time-select" onClick={previousWeek}> &lt; </button>
                 <h2 className="displayed-week"> 
-                    {new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()-weekdayOfFirstDay).getMonth() + 1}/
-                    {new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()-weekdayOfFirstDay).getDate()} - {new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()+(6-weekdayOfFirstDay)).getMonth() + 1}/
-                    {new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()+(6-weekdayOfFirstDay)).getDate()}
+                    {months[new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()-weekdayOfFirstDay).getMonth()]} {new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()-weekdayOfFirstDay).getDate()}
+                    &emsp;&#8212;&emsp;
+                    {months[new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()+(6-weekdayOfFirstDay)).getMonth()]} {new Date(timeframe.getFullYear(), timeframe.getMonth(), timeframe.getDate()+(6-weekdayOfFirstDay)).getDate()}
                 </h2>
                 <button className="time-select" onClick={nextWeek}> &gt; </button>
             </div>
@@ -77,7 +78,7 @@ function CalendarWeek(props) {
                 {
                     currentDays.map((day) => {
                         return (
-                            <div className={"calendar-day week" + (day.currentMonth ? " current" : "") + (day.selected ? " selected" : "")} onClick={() => {}} key={day.date}>
+                            <div className={"calendar-day week" + (day.currentMonth ? " current" : "") + (day.selected ? " selected" : "")} onClick={() => getAddDate(day.date.toDateString())} key={day.date}>
                                 <p>{day.number}</p>
                                 <div className="events">
                                     {
@@ -85,6 +86,7 @@ function CalendarWeek(props) {
                                             return(
                                                 <div className="event" key={event._id} onClick={(e) => {
                                                     e.stopPropagation();
+                                                    getEventInfo(event);
                                                 }}
                                                 style={{ position: "absolute", top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, height: `${event.length / 2}px`}}
                                                 >{event.title} - {new Date(event.start).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}</div>

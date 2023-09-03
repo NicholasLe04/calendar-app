@@ -1,9 +1,6 @@
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-  font-family: "Pixelated";
+  font-family: "PublicSans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,6 +12,87 @@ code {
 
 
 @font-face {
-  font-family: "Pixelated";
-  src: url("../public/fonts/Pixel_NES.otf")
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url("../public/fonts/PublicSans-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track { 
+  background: white;
+}
+
+/* Add a border to the scrollbar track */
+::-webkit-scrollbar-track-piece {
+  padding: 10px;
+  border-left: 2px solid #121212;
+  border-right: 2px solid #121212;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #121212;
 }

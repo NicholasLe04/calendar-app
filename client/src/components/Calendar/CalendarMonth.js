@@ -35,7 +35,6 @@ function CalendarMonth(props) {
             currentDay.setDate(currentDay.getDate() + 1);
         }
 
-        // let eventsToday = events.filter(event => (new Date(event["start"]).toDateString().substring(0,15) === new Date(currentDay).toDateString().substring(0,15)));
         let eventsToday = events.filter(function(event){
             return ( 
                 new Date(event["start"]).toDateString().substring(0,15) === new Date(currentDay).toDateString().substring(0,15) ||

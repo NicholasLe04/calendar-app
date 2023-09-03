@@ -123,7 +123,7 @@ function Dashboard() {
             {(addPopUp || eventPopUp) && <DimmedOverlay/>}
             <div className={"dashboard" + duringPopUp}>  
                 <div className="header">
-                    <p className="title">UniPlan</p>
+                    <p className="title">UNIPLAN</p>
                     <p className="user">Welcome, {currentUser.username}!</p>
                     <button className="logout-button" onClick={logout}>Log Out</button>
                 </div>
@@ -132,7 +132,7 @@ function Dashboard() {
                 </div>
             </div>
             <div className="footer">
-                NICHOLAS LE
+                Created by Nicholas Le
             </div>
         </>
     );
