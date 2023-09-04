@@ -16,12 +16,14 @@ function Login() {
             }
             
             try {
-                await axios.post(`${BASE_URL}/user/isloggedin`, {},{
+                let result = await axios.post(`${BASE_URL}/user/isloggedin`, {},{
                     headers: {
                         "jwt-auth-token": localStorage.getItem('token'),
                     },
-                });
-                navigate('/dashboard');
+                })
+                if (result.status === 200) {
+                    navigate("/dashboard")
+                }
             } catch (err) {
                 return;
             }

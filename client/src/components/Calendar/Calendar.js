@@ -16,11 +16,11 @@ function Calendar(props) {
         <>
             <div className="calendar">
                 <div className="timeframe-scale-container">
-                    <select id="timeframe-scale" defaultValue="month" onChange={(e) => {setTimescale(e.target.value)}}>
-                        <option value="month">Month</option>
-                        <option value="week">Week</option>
-                        <option value="day">Day</option>
-                    </select>
+                    <div className="timeframe-selection">
+                        <button className={`timeframe-select ${ timescale === "month" ? "selected-timeframe" : ""}`} onClick={() => setTimescale("month")}>Month</button>
+                        <button className={`timeframe-select ${ timescale === "week" ? "selected-timeframe" : ""}`} onClick={() => setTimescale("week")}>Week</button>
+                        <button className={`timeframe-select ${ timescale === "day" ? "selected-timeframe" : ""}`} onClick={() => setTimescale("day")}>Day</button>
+                    </div>
                 </div>
                 <div className="calendar-body">
                     <div className="table">

@@ -18,7 +18,7 @@
 .events {
   width: 100%;
   margin-top: 50px;
-  margin-left: 1px;
+  margin-left: 1.25px;
 }
 
 .table-header {
@@ -37,16 +37,16 @@
   display: flex;
   justify-content: center;
 
-  font-size: medium;
+  font-size: x-large;
 }
 
 .displayed-month {
   margin-top: 25px;
-  height: 50px;
-  width: 450px;
+  height: 75px;
+  width: 400px;
 
   text-align: center;
-  line-height: 50px;
+  line-height: 75px;
 
   background-color: darkseagreen;
   border: solid 3px #121212;
@@ -55,11 +55,11 @@
 
 .displayed-week {
   margin-top: 25px;
-  height: 50px;
+  height: 75px;
   width: 450px;
 
   text-align: center;
-  line-height: 50px;
+  line-height: 75px;
 
   background-color: darkseagreen;
   border: solid 3px #121212;
@@ -71,7 +71,7 @@
   font-size: xx-large;
   font-weight: 900;
 
-  margin-top: 27px;
+  margin-top: 40px;
   margin-left: 15px;
   margin-right: 15px;
 
@@ -81,8 +81,8 @@
   text-align: center;
   line-height: 45px;
 
-  background-color: darkseagreen;
-  border: solid 3px #121212;
+  border-radius: 4px;
+  border: solid 4px #121212;
   box-shadow: 2px 2px #121212;
   
   transition: transform 100ms, box-shadow 100ms;

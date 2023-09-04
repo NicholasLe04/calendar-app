@@ -45,7 +45,7 @@
     border-radius: 4px;
     border: solid 4px #121212;
     box-shadow: 2px 2px #121212;
-    transition: transform 50ms, box-shadow 50ms;
+    transition: transform 100ms, box-shadow 100ms;
 }
 
 .logout-button:hover {
