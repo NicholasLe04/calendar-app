@@ -2,6 +2,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 
+import "./Login.css";
+
 const BASE_URL = "https://uniplan-api.vercel.app";
 
 function Login() {
@@ -39,7 +41,7 @@ function Login() {
             localStorage.setItem("token", user.data.token);
             navigate('/dashboard');
         } catch(err){
-            alert(err.response.data.message);
+            alert(err);
         }
     }
 
@@ -54,35 +56,33 @@ function Login() {
             localStorage.setItem('token', result.data.token);
             navigate('/dashboard');
         } catch(err){
-            alert(err.response.data.message);
+            alert(err);
         }
     }
 
 
     return (
-        <>
-            <div className="Login">
-                <h1>Login</h1>
-                <form onSubmit={login}> 
-                <label for="username">Username:</label><br/>
-                <input type="text" id="username" name="username"/><br/>
-                <label for="password">Password:</label><br/>
-                <input type="password" id="password" name="password"/><br/>
-                <input type="submit"/>
-                </form>
+        <div className="login-signup-container-container">
+            <h1 style={{ fontWeight: "900", fontSize: "50px", margin: "0", position: "fixed", top: "3%", left: "3%" }}>UNIPLAN</h1>
+            <div className="login-signup-container">
+                <div className="Login">
+                    <h1>LOG IN</h1>
+                    <form onSubmit={login}> 
+                        <input type="text" id="username" name="username" placeholder="USERNAME" defaultValue=""/><br/>
+                        <input type="password" id="password" name="password" placeholder="PASSWORD" defaultValue=""/><br/>
+                        <button type="submit">Log In</button>
+                    </form>
+                </div>
+                <div className="Signup">
+                    <h1>SIGN UP</h1>
+                    <form onSubmit={signup}> 
+                        <input type="text" id="newUsername" name="newUsername" placeholder="USERNAME" defaultValue=""/><br/>
+                        <input type="password" id="newPassword" name="newPassword" placeholder="PASSWORD" defaultValue=""/><br/>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
             </div>
-
-            <div className="Signup">
-                <h1>Signup</h1>
-                <form onSubmit={signup}> 
-                <label for="newUsername">Username:</label><br/>
-                <input type="text" id="newUsername" name="newUsername"/><br/>
-                <label for="newPassword">Password:</label><br/>
-                <input type="password" id="newPassword" name="newPassword"/><br/>
-                <input type="submit"/>
-            </form>
         </div>
-        </>
     );
 }
 

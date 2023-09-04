@@ -1,0 +1,126 @@
+.login-signup-container-container {
+    justify-content: center;
+    align-items: center;
+
+    outline: 4px solid #121212;
+    outline-offset: -4px;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-signup-container {
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 50%;
+    height: 60%;
+    top: 20%;
+    left: 25%;
+
+    border: 4px solid #121212;
+    box-shadow: 8px 8px #121212;
+}
+
+.Login {
+    background-color: darkseagreen;
+    margin-right: 25px;
+    width: 35%;
+    height: 80%;
+
+    text-align: center;
+
+    border: 4px solid #121212;
+    box-shadow: 8px 8px #121212;
+}
+
+.Login h1 {
+    margin-top: 25%;
+    margin-bottom: 15%;
+}
+
+.Login input {
+    border: 4px solid #121212;
+    border-radius: 0;
+    margin-bottom: 40px;
+
+    height: 30px;
+    width: 200px;
+}
+
+.Login input:focus {
+    outline: none;
+}
+
+.Login button {
+    width: 100px;
+    height: 50px;
+    background-color: #FDFFFC;
+    font-family: "PublicSans";
+    font-size: large;
+
+    padding: 12px 18px;
+
+    border-radius: 4px;
+    border: solid 4px #121212;
+    box-shadow: 2px 2px #121212;
+    transition: transform 50ms, box-shadow 50ms;
+}
+
+.Login button:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px #121212;
+}
+
+
+
+.Signup {
+    background-color: darkseagreen;
+    margin-left: 25px;
+    width: 35%;
+    height: 80%;
+
+    text-align: center;
+
+    border: 4px solid #121212;
+    box-shadow: 8px 8px #121212;
+}
+
+.Signup h1 {
+    margin-top: 25%;
+    margin-bottom: 15%;
+}
+
+.Signup input {
+    border: 4px solid #121212;
+    border-radius: 0;
+    margin-bottom: 40px;
+
+    height: 30px;
+    width: 200px;
+}
+
+.Signup input:focus {
+    outline: none;
+}
+
+.Signup button {
+    width: 125px;
+    height: 50px;
+    background-color: #FDFFFC;
+    font-family: "PublicSans";
+    font-size: large;
+
+    padding: 12px 18px;
+
+    border-radius: 4px;
+    border: solid 4px #121212;
+    box-shadow: 2px 2px #121212;
+    transition: transform 50ms, box-shadow 50ms;
+}
+
+.Signup button:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px #121212;
+}
