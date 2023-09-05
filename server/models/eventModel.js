@@ -9,6 +9,9 @@ let eventSchema = Schema(
         description: {
             type: String,  
         },
+        eventType: {
+            type: String,  
+        },
         start: {
             type: Date,
         },

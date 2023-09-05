@@ -32,6 +32,7 @@ function AddEventPopUp(props) {
         addEventFunction(   
                             document.getElementById("event-title").value, 
                             dateString, 
+                            eventType,
                             length, 
                             document.getElementById("event-description").value,
                             repetitions
@@ -59,7 +60,7 @@ function AddEventPopUp(props) {
         <div className="popup nes-container">
             <div className="popup-content">
                 <h1>ADD EVENT</h1>
-                <select id="event-type" onChange={handleEventTypeChange}>
+                <select onChange={handleEventTypeChange}>
                     <option value="class">Class</option>
                     <option value="club">Club</option>
                     <option value="work">Work</option>
@@ -87,14 +88,14 @@ function AddEventPopUp(props) {
                     />
                 </div>
                 <p className="event-info-title">Days</p>
-                <li style={{float: "left", display: "flex"}}>
-                    <ul style={{padding: 0}}>Sun<input type="checkbox" name="Sunday" id="repetition-0"/></ul>
-                    <ul style={{padding: 0}}>Mon<input type="checkbox" name="Monday" id="repetition-1"/></ul>
-                    <ul style={{padding: 0}}>Tue<input type="checkbox" name="Tuesday" id="repetition-2"/></ul>
-                    <ul style={{padding: 0}}>Wed<input type="checkbox" name="Wednesday" id="repetition-3"/></ul>
-                    <ul style={{padding: 0}}>Thu<input type="checkbox" name="Thursday" id="repetition-4"/></ul>
-                    <ul style={{padding: 0}}>Fri<input type="checkbox" name="Friday" id="repetition-5"/></ul>
-                    <ul style={{padding: 0}}>Sun<input type="checkbox" name="Saturday" id="repetition-6"/></ul>
+                <li style={{ display: "flex", justifyContent: "space-between" }}>
+                    <ul style={{padding: 0}}><p>Sun</p><input type="checkbox" name="Sunday" id="repetition-0"/></ul>
+                    <ul style={{padding: 0}}><p>Mon</p><input type="checkbox" name="Monday" id="repetition-1"/></ul>
+                    <ul style={{padding: 0}}><p>Tue</p><input type="checkbox" name="Tuesday" id="repetition-2"/></ul>
+                    <ul style={{padding: 0}}><p>Wed</p><input type="checkbox" name="Wednesday" id="repetition-3"/></ul>
+                    <ul style={{padding: 0}}><p>Thu</p><input type="checkbox" name="Thursday" id="repetition-4"/></ul>
+                    <ul style={{padding: 0}}><p>Fri</p><input type="checkbox" name="Friday" id="repetition-5"/></ul>
+                    <ul style={{padding: 0}}><p>Sun</p><input type="checkbox" name="Saturday" id="repetition-6"/></ul>
                 </li>
                 <p className="event-info-title">Description:</p><textarea id="event-description" style={{resize: "none", width: "100%", height: "30px"}}/>
             </div>

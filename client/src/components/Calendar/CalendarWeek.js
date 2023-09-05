@@ -84,7 +84,7 @@ function CalendarWeek(props) {
                                     {
                                         day.events.map((event) => {
                                             return(
-                                                <div className="event" key={event._id} onClick={(e) => {
+                                                <div className={`event ${event.eventType}`}  key={event._id} onClick={(e) => {
                                                     e.stopPropagation();
                                                     getEventInfo(event);
                                                 }}

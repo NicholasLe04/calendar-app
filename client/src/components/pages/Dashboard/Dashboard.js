@@ -82,12 +82,13 @@ function Dashboard() {
         setEventPopUp(true);
     }
 
-    async function addEvent(title, time, length, description, repetitions) {
+    async function addEvent(title, time, eventType, length, description, repetitions) {
         await axios.post(`${BASE_URL}/event/add-event`, {
             user_id: currentUser._id,
             event: {
                 title: title,
                 description: description,
+                eventType: eventType,
                 start: `${selectedDate}T${time}`,
                 length: length,
                 repetitions: repetitions, 
