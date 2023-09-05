@@ -19,7 +19,7 @@ function AddEventPopUp(props) {
         }
         const dateString = `${document.getElementById("event-start").value}:00.000-07:00`;
 
-        const length = (eventLengthHours * 60) + eventLengthMinutes;
+        const length = (eventLengthHours * 60) + (eventLengthMinutes * 1);
 
 
         let repetitions = [];
