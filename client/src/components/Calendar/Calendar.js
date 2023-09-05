@@ -10,7 +10,8 @@ function Calendar(props) {
 
     let today = new Date();
     const [ timescale, setTimescale ] = useState("month");
-    const [ currentDate, setCurrentDate ] = useState(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
+    const [ currentMonth, setCurrentMonth ] = useState(new Date(today.getFullYear(), today.getMonth()));
+    const [ currentWeek, setCurrentWeek ] = useState(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
 
     return (
         <>
@@ -24,8 +25,8 @@ function Calendar(props) {
                 </div>
                 <div className="calendar-body">
                     <div className="table">
-                        { timescale === "month" && <CalendarMonth events={events} timeframe={currentDate} changeTimeframe={setCurrentDate} getAddDate={getAddDate} getEventInfo={getEventInfo} /> }
-                        { timescale === "week" && <CalendarWeek events={events} timeframe={currentDate} changeTimeframe={setCurrentDate} getAddDate={getAddDate} getEventInfo={getEventInfo}/>}
+                        { timescale === "month" && <CalendarMonth events={events} timeframe={currentMonth} changeTimeframe={setCurrentMonth} getAddDate={getAddDate} getEventInfo={getEventInfo} /> }
+                        { timescale === "week" && <CalendarWeek events={events} timeframe={currentWeek} changeTimeframe={setCurrentWeek} getAddDate={getAddDate} getEventInfo={getEventInfo}/>}
                     </div>
                 </div>
             </div>

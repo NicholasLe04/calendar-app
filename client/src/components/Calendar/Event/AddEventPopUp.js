@@ -11,7 +11,8 @@ function AddEventPopUp(props) {
     async function addEvent() {
         if (!(  
                 document.getElementById("event-title").value && 
-                document.getElementById("event-start").value
+                document.getElementById("event-start").value &&
+                eventLengthHours + eventLengthMinutes !== 0  
             )) {
             alert("missing params");
             return;
@@ -67,30 +68,24 @@ function AddEventPopUp(props) {
                 <p className="event-info-title">Course</p><input type="text" id="event-title"/><br/>
                 <p className="event-info-title">Course Start Time</p><input type="time" id="event-start"/><br/>
                 <p className="event-info-title">Course length</p>
-                <label>Hour</label>
-                <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <div className="event-length-select">
+                    <label>Hours</label>
                     <input 
-                        type="range" 
+                        type="number" 
                         defaultValue="0"
                         min="0"
                         max="23" 
                         onChange={handleEventLengthHoursChange}
                     />
-                    <p className="event-length-label">{eventLengthHours}</p>
-                </div>
-                <br/>
-                <label>Minute</label>
-                <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <label>Minutes</label>
                     <input 
-                        type="range" 
+                        type="number" 
                         defaultValue="0"
                         min="0"
                         max="59" 
                         onChange={handleEventLengthMinutesChange}
                     />
-                    <p className="event-length-label">{eventLengthMinutes}</p>
                 </div>
-                <br/>
                 <p className="event-info-title">Days</p>
                 <li style={{float: "left", display: "flex"}}>
                     <ul style={{padding: 0}}>Sun<input type="checkbox" name="Sunday" id="repetition-0"/></ul>
@@ -101,11 +96,11 @@ function AddEventPopUp(props) {
                     <ul style={{padding: 0}}>Fri<input type="checkbox" name="Friday" id="repetition-5"/></ul>
                     <ul style={{padding: 0}}>Sun<input type="checkbox" name="Saturday" id="repetition-6"/></ul>
                 </li>
-                <p className="event-info-title">Description:</p><textarea id="event-description" style={{resize: "none", width: "80%", height: "100px"}}/>
+                <p className="event-info-title">Description:</p><textarea id="event-description" style={{resize: "none", width: "100%", height: "30px"}}/>
             </div>
             <div className="popup-buttons">
-                <button onClick={addEvent}>Add Event</button>
                 <button onClick={cancel}>Cancel</button>
+                <button onClick={addEvent}>Add Event</button>
             </div>
         </div>  
     );

@@ -12,6 +12,8 @@ const BASE_URL = "https://uniplan-api.vercel.app";
 
 function Dashboard() {
     const navigate = useNavigate();
+    const [ isLoading, setIsLoading ] = useState(true);
+
     const [ currentUser, setCurrentUser ] = useState({});
     const [ selectedEvent, setSelectedEvent ] = useState();
     const [ selectedDate, setSelectedDate ] = useState();
@@ -60,6 +62,13 @@ function Dashboard() {
             }
         }
         initializeUserData();
+
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1750);
+  
+      // Cleanup the timer when the component unmounts
+      return () => clearTimeout(timer);
     }, []);
 
 
@@ -119,16 +128,22 @@ function Dashboard() {
         <>
             {eventPopUp && <EventInfoPopUp togglePopUp={setEventPopUp} deleteEventFunction={deleteEvent} eventInfo={selectedEvent}/>}
             {(addPopUp && !eventPopUp) && <AddEventPopUp togglePopUp={setAddPopUp} addEventFunction={addEvent}/>}
-            {(addPopUp || eventPopUp) && <DimmedOverlay/>}
+            {(addPopUp || eventPopUp) && <DimmedOverlay onClick={() => {setEventPopUp(false); setAddPopUp(false)}}/>}
             <div className={"dashboard" + duringPopUp}>  
                 <div className="header">
                     <p className="title">UNIPLAN</p>
                     <p className="user">Welcome, {currentUser.username}!</p>
                     <button className="logout-button" onClick={logout}>Log Out</button>
                 </div>
-                <div className="calendar-div">
-                    <Calendar events={events} toggleAddEvent={setAddPopUp} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
-                </div>
+                { isLoading ? (
+                    <div style={{ height: "900px", width: "100vw", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <img src="/calendar.gif" width="500px"/>
+                    </div>
+                ) : (
+                    <div className="calendar-div">
+                        <Calendar events={events} toggleAddEvent={setAddPopUp} getAddDate={getAddDate} getEventInfo={getEventInfo}/>
+                    </div>
+                )}
             </div>
             <div className="footer">
                 Created by Nicholas Le
