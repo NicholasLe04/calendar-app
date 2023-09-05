@@ -86,7 +86,7 @@ function CalendarMonth(props) {
                                     {
                                         day.events.map((event) => {
                                             return(
-                                                <div className="event" key={event._id} onClick={(e) => {
+                                                <div className={`event ${event.eventType}`} key={event._id} onClick={(e) => {
                                                     e.stopPropagation();
                                                     getEventInfo(event);
                                                 }}>{event.title} - {new Date(event.start).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}</div>

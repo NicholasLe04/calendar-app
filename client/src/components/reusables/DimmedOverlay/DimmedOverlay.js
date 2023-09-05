@@ -1,7 +1,7 @@
 import "./DimmedOverlay.css";
 
-function DimmedOverlay(){
-    return <div className="dim-overlay"></div>;
+function DimmedOverlay(props){
+    return <div className="dim-overlay" onClick={props.onClick}></div>;
 };
   
 export default DimmedOverlay;

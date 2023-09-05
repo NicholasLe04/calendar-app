@@ -2,9 +2,9 @@
     position: fixed;
 
     left: 35%;
-    top: 20%;
+    top: 22.5%;
     
-    height: 500px;
+    height: auto;
 
     width: 30%;
 
@@ -43,7 +43,7 @@
     font-family: "PublicSans";
 
     padding: 12px 18px;
-    margin: 10px;
+    margin: 20px;
     margin-bottom: 30px;
 
     border-radius: 4px;
@@ -55,4 +55,24 @@
 .popup button:hover {
     transform: translate(1px, 1px);
     box-shadow: 1px 1px #121212;
+}
+
+.event-info-title {
+    font-size: medium;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.event-length-label {
+    width: 20px;
+}
+
+.event-length-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-length-select label {
+    margin: 0 10px;
 }

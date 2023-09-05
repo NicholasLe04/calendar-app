@@ -1,18 +1,43 @@
 
 .event {
-  background-color: darkseagreen;
-
   font-weight: 700;
   font-size: 12px;
 
-  border-top: 1px solid rgb(107, 146, 107);
-  border-bottom: 1px solid rgb(107, 146, 107);
   text-align: center;
   width: 99.5%;
 }
 
-.event:hover {
-  background-color: rgb(124, 161, 124);
+
+.class {
+  color: white;
+  background-color: #22577a;
+
+  border-top: 1px #173951;
+  border-bottom: 1px solid #173951;
+}
+
+.club {
+  color: white;
+  background-color: #38a3a5;
+
+  border-top: 1px #2b7c7d;
+  border-bottom: 1px solid #2b7c7d;
+}
+
+.work {
+  color: black;
+  background-color: #80ed99;
+
+  border-top: 1px #5fb573;
+  border-bottom: 1px solid #5fb573;
+}
+
+.personal {
+  color: black;
+  background-color: #c7f9cc;
+
+  border-top: 1px #9dc5a1;
+  border-bottom: 1px solid #9dc5a1;
 }
 
 .events {
