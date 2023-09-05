@@ -74,7 +74,6 @@ function Dashboard() {
     }
 
     async function addEvent(title, time, length, description, repetitions) {
-        console.log(title + time + length);
         await axios.post(`${BASE_URL}/event/add-event`, {
             user_id: currentUser._id,
             event: {
