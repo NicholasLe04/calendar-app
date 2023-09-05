@@ -1,43 +1,38 @@
 
 .event {
-  font-weight: 700;
+  font-weight: 500;
   font-size: 12px;
-
   text-align: center;
-  width: 99.5%;
+  width: 99%;
 }
 
 
 .class {
-  color: white;
-  background-color: #22577a;
-
-  border-top: 1px #173951;
-  border-bottom: 1px solid #173951;
+  color: #121212;
+  background-color: #b6b3e9;
+  border-top: 1px solid #9b98c6;
+  border-bottom:1px solid #9b98c6;
 }
 
 .club {
-  color: white;
-  background-color: #38a3a5;
-
-  border-top: 1px #2b7c7d;
-  border-bottom: 1px solid #2b7c7d;
+  color: #121212;
+  background-color: #cabcd1;
+  border-top: 1px solid #ad9fb3;
+  border-bottom:1px solid #ad9fb3;
 }
 
 .work {
   color: black;
-  background-color: #80ed99;
-
-  border-top: 1px #5fb573;
-  border-bottom: 1px solid #5fb573;
+  background-color: #dcdbf2;
+  border-top: 1px solid #b2b1c4;
+  border-bottom:1px solid #b2b1c4;
 }
 
 .personal {
   color: black;
-  background-color: #c7f9cc;
-
-  border-top: 1px #9dc5a1;
-  border-bottom: 1px solid #9dc5a1;
+  background-color: #d0cfec;
+  border-top: 1px solid #a7a6bb;
+  border-bottom:1px solid #a7a6bb;
 }
 
 .events {
@@ -73,7 +68,7 @@
   text-align: center;
   line-height: 75px;
 
-  background-color: darkseagreen;
+  background-color: #d0cfec;
   border: solid 3px #121212;
   box-shadow: 4px 4px #121212;
 }
@@ -86,7 +81,7 @@
   text-align: center;
   line-height: 75px;
 
-  background-color: darkseagreen;
+  background-color: #d0cfec;
   border: solid 3px #121212;
   box-shadow: 4px 4px #121212;
 }

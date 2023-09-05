@@ -35,8 +35,8 @@
 }
 
 .selected-timeframe {
-  background-color: darkseagreen;
-  color: white;
+  background-color: #d0cfec;
+  color: #121212;
   transform: translate(1px, 1px);
   box-shadow: 1px 1px #121212;
 }
