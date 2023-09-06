@@ -132,7 +132,7 @@ function Dashboard() {
                     <button className="logout-button" onClick={logout}>Log Out</button>
                 </div>
                 { isLoading ? (
-                    <div style={{ height: "900px", width: "100vw", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ height: "1000px", width: "100vw", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <img src="/calendar.gif" width="500px"/>
                     </div>
                 ) : (
