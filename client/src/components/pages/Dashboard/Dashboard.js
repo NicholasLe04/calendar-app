@@ -57,18 +57,13 @@ function Dashboard() {
                     },
                 });
                 setEvents(eventResponse.data.events);
+
+                setIsLoading(false);
             } catch (err) {
                 navigate('/login');
             }
         }
         initializeUserData();
-
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1750);
-  
-      // Cleanup the timer when the component unmounts
-      return () => clearTimeout(timer);
     }, []);
 
 
