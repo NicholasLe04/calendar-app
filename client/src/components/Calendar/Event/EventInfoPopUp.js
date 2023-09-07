@@ -33,7 +33,7 @@ function EventInfoPopUp(props) {
             </div>
             <div className="popup-buttons">
                 <button onClick={cancel}>Cancel</button>
-                <button onClick={deleteEvent}>Delete Event</button>
+                <button style={{backgroundColor: "#d0cfec"}} onClick={deleteEvent}>Delete Event</button>
             </div>
         </div>  
     );

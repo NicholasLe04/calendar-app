@@ -1,4 +1,5 @@
 import "./CalendarDays.css";
+import { useEffect, useState } from "react";
 
 function CalendarWeek(props) {
     const { events, timeframe, changeTimeframe, getAddDate, getEventInfo  } = props;
@@ -9,6 +10,14 @@ function CalendarWeek(props) {
     let currentDay = new Date(timeframe);
     let weekdayOfFirstDay = currentDay.getDay();
     let currentDays = [];
+    const [ currentTime, setCurrentTime ] = useState(new Date());
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTime(new Date());
+        }, 60000);
+        return () => clearInterval(interval);
+    }, []);
 
     if (events === []) {
         return (<h1>Loading</h1>);
@@ -50,7 +59,7 @@ function CalendarWeek(props) {
             date: (new Date(currentDay)),
             month: currentDay.getMonth(),
             number: currentDay.getDate(),
-            selected: (currentDay.toDateString() === (new Date()).toDateString()),
+            selected: (currentDay.toDateString() === currentTime.toDateString()),
             year: currentDay.getFullYear(),
             events: eventsToday
         });
@@ -80,6 +89,17 @@ function CalendarWeek(props) {
                         return (
                             <div className={"calendar-day week" + (day.currentMonth ? " current" : "") + (day.selected ? " selected" : "")} onClick={() => getAddDate(day.date.toDateString())} key={day.date}>
                                 <p>{day.number}</p>
+                                { day.selected && 
+                                    <>
+                                        <p style={{ position: "absolute", top: `${((currentTime.getHours() * 60 + currentTime.getMinutes()) / 2) + 23}px`, color: "#121212", fontSize: "13px", fontWeight: "400" }}>
+                                            {currentTime.toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}
+                                        </p>
+                                        <div style={{ position: "absolute", top: `${((currentTime.getHours() * 60 + currentTime.getMinutes()) / 2) + 49}px`, 
+                                                        left: "1%", width: "98%", height: "2px", backgroundColor: "red", 
+                                                        marginTop: "3px", marginBottom: "3px"}}>
+                                        </div>
+                                    </>
+                                }
                                 <div className="events">
                                     {
                                         day.events.map((event) => {
@@ -88,7 +108,7 @@ function CalendarWeek(props) {
                                                     e.stopPropagation();
                                                     getEventInfo(event);
                                                 }}
-                                                style={{ position: "absolute", top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, height: `${event.length / 2}px`}}
+                                                style={{ position: "absolute", top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, height: `${event.length / 2}px` }}
                                                 >{event.title} - {new Date(event.start).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}</div>
                                             )
                                         })

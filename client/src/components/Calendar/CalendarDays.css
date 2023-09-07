@@ -1,9 +1,8 @@
 
 .event {
   font-weight: 500;
-  font-size: 12px;
   text-align: center;
-  width: 99%;
+  width: 99.75%;
 }
 
 
@@ -38,7 +37,7 @@
 .events {
   width: 100%;
   margin-top: 50px;
-  margin-left: 1.25px;
+  margin-left: 1px;
 }
 
 .table-header {
@@ -56,7 +55,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-
+  margin-bottom: 30px;
   font-size: x-large;
 }
 
@@ -136,12 +135,20 @@
 }
 
 
+.day {
+  height: 770px;
+  width: 45%;
+  margin-right: 5%;
+  font-size: 18px;
+}
 
 .week {
+  font-size: 14px;
   height: 770px;
 }
 
 .month {
+  font-size: 12px;
   height: 150px;
 }
 
