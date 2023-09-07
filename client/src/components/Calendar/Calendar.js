@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./Calendar.css";
 import CalendarMonth from "./CalendarMonth";
 import CalendarWeek from "./CalendarWeek";
+import CalendarDay from "./CalendarDay";
 
 function Calendar(props) {
     const { events, getAddDate, getEventInfo } = props;
@@ -12,6 +13,7 @@ function Calendar(props) {
     const [ timescale, setTimescale ] = useState("month");
     const [ currentMonth, setCurrentMonth ] = useState(new Date(today.getFullYear(), today.getMonth()));
     const [ currentWeek, setCurrentWeek ] = useState(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
+    const [ currentDay, setCurrentDay ] = useState(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
 
     return (
         <>
@@ -27,6 +29,7 @@ function Calendar(props) {
                     <div className="table">
                         { timescale === "month" && <CalendarMonth events={events} timeframe={currentMonth} changeTimeframe={setCurrentMonth} getAddDate={getAddDate} getEventInfo={getEventInfo} /> }
                         { timescale === "week" && <CalendarWeek events={events} timeframe={currentWeek} changeTimeframe={setCurrentWeek} getAddDate={getAddDate} getEventInfo={getEventInfo}/>}
+                        { timescale === "day" && <CalendarDay events={events} timeframe={currentDay} changeTimeframe={setCurrentDay} getAddDate={getAddDate} getEventInfo={getEventInfo} /> }
                     </div>
                 </div>
             </div>

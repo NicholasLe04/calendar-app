@@ -66,9 +66,9 @@ function AddEventPopUp(props) {
                     <option value="work">Work</option>
                     <option value="personal">Personal</option>
                 </select>
-                <p className="event-info-title">Course</p><input type="text" id="event-title"/><br/>
-                <p className="event-info-title">Course Start Time</p><input type="time" id="event-start"/><br/>
-                <p className="event-info-title">Course length</p>
+                <p className="event-info-title">{ eventType === "class" ? "Course" : "Event Title" }</p><input type="text" id="event-title"/><br/>
+                <p className="event-info-title">Start Time</p><input type="time" id="event-start"/><br/>
+                <p className="event-info-title">Length</p>
                 <div className="event-length-select">
                     <label>Hours</label>
                     <input 
@@ -101,7 +101,7 @@ function AddEventPopUp(props) {
             </div>
             <div className="popup-buttons">
                 <button onClick={cancel}>Cancel</button>
-                <button onClick={addEvent}>Add Event</button>
+                <button style={{backgroundColor: "#d0cfec"}} onClick={addEvent}>Add Event</button>
             </div>
         </div>  
     );
