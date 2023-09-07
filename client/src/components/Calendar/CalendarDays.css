@@ -1,7 +1,6 @@
 
 .event {
   font-weight: 500;
-  font-size: 12px;
   text-align: center;
   width: 99.75%;
 }
@@ -140,13 +139,16 @@
   height: 770px;
   width: 45%;
   margin-right: 5%;
+  font-size: 18px;
 }
 
 .week {
+  font-size: 14px;
   height: 770px;
 }
 
 .month {
+  font-size: 12px;
   height: 150px;
 }
 
