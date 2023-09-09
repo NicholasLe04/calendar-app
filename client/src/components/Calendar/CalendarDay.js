@@ -16,8 +16,9 @@ function CalendarDay(props) {
         return () => clearInterval(interval);
     }, []);
 
-    if (events === []) {
-        return (<h1>Loading</h1>);
+
+    if (events === undefined){
+        return(<h1>loading</h1>);  
     }
 
     function nextDay() {
@@ -62,15 +63,11 @@ function CalendarDay(props) {
                     <div className="calendar-day day current selected" onClick={() => getAddDate(todayInfo.date.toDateString())} key={todayInfo.date}>
                         <p>{todayInfo.number}</p>
                         { todayInfo.selected && 
-                            <>
-                                <p style={{ position: "absolute", top: `${((currentTime.getHours() * 60 + currentTime.getMinutes()) / 2) + 23}px`, color: "#121212", fontSize: "13px", fontWeight: "400" }}>
-                                    {currentTime.toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}
-                                </p>
-                                <div style={{ position: "absolute", top: `${((currentTime.getHours() * 60 + currentTime.getMinutes()) / 2) + 49}px`, 
-                                                left: "1%", width: "98%", height: "2px", backgroundColor: "red", 
-                                                marginTop: "3px", marginBottom: "3px"}}>
-                                </div>
-                            </>
+                            <div style={{ position: "absolute", display: "flex", alignItems: "center", justifyContent: "space-between", 
+                                            top: `${((currentTime.getHours() * 60 + currentTime.getMinutes()) / 2) + 49}px`, width: "100%", zIndex: "3" }}>
+                                <label style={{ marginLeft: "1%", fontSize: "12px", fontWeight: "500" }}>{currentTime.toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}</label>
+                                <div style={{ marginRight: "1%", width: "89%", height: "2px", backgroundColor: "red", marginTop: "3px", marginBottom: "3px"}}/>
+                            </div>
                         }
                         <div className="events">
                             {
@@ -80,7 +77,7 @@ function CalendarDay(props) {
                                             e.stopPropagation();
                                             getEventInfo(event);
                                         }}
-                                        style={{ position: "absolute", top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, height: `${event.length / 2}px` }}
+                                        style={{ position: "absolute", top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, height: `${event.length / 2}px`, lineHeight: `${event.length / 2}px` }}
                                         >{event.title} - {new Date(event.start).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}</div>
                                     )
                                 })

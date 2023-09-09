@@ -19,7 +19,7 @@ function Dashboard() {
     const [ selectedDate, setSelectedDate ] = useState();
     const [ addPopUp, setAddPopUp ] = useState(false);
     const [ eventPopUp, setEventPopUp ] = useState(false);
-    const [ events, setEvents ] = useState([]);
+    const [ events, setEvents ] = useState();
 
     const duringPopUp = (addPopUp || eventPopUp) ? " during-popup" : "";
 
