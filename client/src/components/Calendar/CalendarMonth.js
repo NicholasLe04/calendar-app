@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./CalendarDays.css";
 
 function CalendarMonth(props) {
@@ -11,7 +10,7 @@ function CalendarMonth(props) {
     let weekdayOfFirstDay = currentDay.getDay();
     let currentDays = [];
 
-    if (events === []){
+    if (events === undefined){
         return(<h1>loading</h1>);  
     }
     

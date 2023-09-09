@@ -2,34 +2,35 @@
 .event {
   font-weight: 500;
   text-align: center;
+  border-radius: 5px;
   width: 99.75%;
 }
 
 
 .class {
   color: #121212;
-  background-color: #b6b3e9;
+  background-color: rgb(182, 179, 233, 0.8);
   border-top: 1px solid #9b98c6;
   border-bottom:1px solid #9b98c6;
 }
 
 .club {
   color: #121212;
-  background-color: #cabcd1;
+  background-color: rgb(202, 188, 209,0.8);
   border-top: 1px solid #ad9fb3;
   border-bottom:1px solid #ad9fb3;
 }
 
 .work {
   color: black;
-  background-color: #dcdbf2;
+  background-color: rgb(220, 219, 242, 0.8);
   border-top: 1px solid #b2b1c4;
   border-bottom:1px solid #b2b1c4;
 }
 
 .personal {
   color: black;
-  background-color: #d0cfec;
+  background-color: rgb(208, 207, 236, 0.8);
   border-top: 1px solid #a7a6bb;
   border-bottom:1px solid #a7a6bb;
 }
@@ -60,7 +61,7 @@
 }
 
 .displayed-month {
-  margin-top: 25px;
+  margin: 0;
   height: 75px;
   width: 400px;
 
@@ -73,7 +74,7 @@
 }
 
 .displayed-week {
-  margin-top: 25px;
+  margin: 0;
   height: 75px;
   width: 450px;
 
@@ -90,7 +91,7 @@
   font-size: xx-large;
   font-weight: 900;
 
-  margin-top: 40px;
+  margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
 
@@ -137,7 +138,7 @@
 
 .day {
   height: 770px;
-  width: 45%;
+  width: 35%;
   margin-right: 5%;
   font-size: 18px;
 }
