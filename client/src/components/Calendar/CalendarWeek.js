@@ -92,7 +92,7 @@ function CalendarWeek(props) {
                                 <p>{day.number}</p>
                                 { day.selected && 
                                     <div style={{ position: "absolute", display: "flex", alignItems: "center", justifyContent: "space-between", 
-                                                    top: `${((currentTime.getHours() * 60 + currentTime.getMinutes()) / 2) + 49}px`, width: "100%", zIndex: "3" }}>
+                                                    top: `${((currentTime.getHours() * 60 + currentTime.getMinutes()) / 2) + 44}px`, width: "100%", zIndex: "3" }}>
                                         <label style={{ marginLeft: "1%", fontSize: "10px", fontWeight: "500" }}>{currentTime.toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}</label>
                                         <div style={{ marginRight: "1%", width: "80%", height: "2px", backgroundColor: "red", marginTop: "3px", marginBottom: "3px"}}/>
                                     </div>
@@ -100,14 +100,26 @@ function CalendarWeek(props) {
                                 <div className="events">
                                     {
                                         day.events.map((event) => {
-                                            return(
-                                                <div className={`event ${event.eventType}`}  key={event._id} onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    getEventInfo(event);
-                                                }}
-                                                style={{ position: "absolute", top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, height: `${event.length / 2}px`, lineHeight: `${event.length / 2}px` }}
-                                                >{event.title} - {new Date(event.start).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}</div>
-                                            )
+                                            if (event.length < 30) {
+                                                return (
+                                                    <div style={{ position: "absolute", top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, marginLeft: "1%" }}>
+                                                        <span className={`${event.eventType}-short`}>&bull; {new Date(event.start).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')} - {event.title}</span>
+                                                    </div>
+                                                )
+                                            }
+                                            else {
+                                                return (
+                                                    <div className={`event ${event.eventType}`}  key={event._id} onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        getEventInfo(event);
+                                                    }}
+                                                    style={{ position: "absolute", display: "flex", alignItems: "center", justifyContent: "center",
+                                                            top: `${((new Date(event.start).getHours() * 60 + new Date(event.start).getMinutes()) / 2) + 49}px`, height: `${event.length / 2}px` }}
+                                                    >
+                                                        {event.title}{ event.length > 60 ? <br/> : <>&ensp;|&ensp;</>}{new Date(event.start).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')} - {new Date(new Date(event.start).getTime() + event.length * 1000 * 60).toLocaleTimeString("en-US").replace(/:\d{2}\s/, ' ')}
+                                                    </div>
+                                                )
+                                            }
                                         })
                                     }
                                 </div>

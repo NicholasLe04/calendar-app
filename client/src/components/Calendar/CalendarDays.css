@@ -14,25 +14,49 @@
   border-bottom:1px solid #9b98c6;
 }
 
+.class-short {
+  color: rgb(182, 179, 233);
+  font-size: small;
+  font-weight: 400;
+}
+
 .club {
   color: #121212;
-  background-color: rgb(202, 188, 209,0.8);
+  background-color: rgb(202, 188, 209, 0.8);
   border-top: 1px solid #ad9fb3;
   border-bottom:1px solid #ad9fb3;
 }
 
+.club-short {
+  color: rgb(202, 188, 209); 
+  font-size: small;
+  font-weight: 400;
+}
+
 .work {
-  color: black;
+  color: #121212;
   background-color: rgb(220, 219, 242, 0.8);
   border-top: 1px solid #b2b1c4;
   border-bottom:1px solid #b2b1c4;
 }
 
+.work-short {
+  color: rgb(220, 219, 242); 
+  font-size: small;
+  font-weight: 400;
+}
+
 .personal {
-  color: black;
+  color: #121212;
   background-color: rgb(208, 207, 236, 0.8);
   border-top: 1px solid #a7a6bb;
   border-bottom:1px solid #a7a6bb;
+}
+
+.personal-short {
+  color: rgb(208, 207, 236); 
+  font-size: small;
+  font-weight: 400;
 }
 
 .events {
@@ -140,11 +164,11 @@
   height: 770px;
   width: 35%;
   margin-right: 5%;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .week {
-  font-size: 14px;
+  font-size: 12px;
   height: 770px;
 }
 
